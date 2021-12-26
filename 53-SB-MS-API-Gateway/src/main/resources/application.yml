@@ -1,0 +1,18 @@
+server:
+  port: 3333
+spring:
+  application:
+    name: GATEWAY-API
+eureka:
+  client:
+    service-url:
+      defaultZone: ${DISCOVERY_URL:http://localhost:9090}/eureka/
+zuul:
+  prefix: /ms
+  routes:
+    greet:
+      path: /api1/**
+      serviceId: GREET-API
+    welcome:
+      path: /api2/**
+      serviceId: WELCOME-API
